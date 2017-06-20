@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="PPE.Pages.Sondages.AjoutSondage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" Height="567.2" Width="1090.167">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Label x:Name="label_Sondage" Margin="0,0,717.4,505.2" Content="Remplissez les différents champs puis valider votre sondage"/>
+        <TextBox x:Name="textBox_Nom" Text="Saisir le Nom de votre sondage" Margin="68,39,779.4,460.2" GotFocus="textBox_Nom_GotFocus" />
+        <Label x:Name="label_Theme" Margin="630,39,326.4,460.2" Content="Choix du thème :" />
+        <ComboBox x:Name="comboBox_Theme" Margin="752,39,60.4,460.2" DisplayMemberPath="{Binding Intitule}"/>
+        <Label x:Name="label_SousTheme" Margin="601,76,326.4,426.2" Content="Choix du sous-thème :"/>
+        <ComboBox x:Name="comboBox_SousTheme" Margin="752,76,60.4,423.2" DisplayMemberPath="{Binding Intitule}"/>
+        <ListView x:Name="listView_Question" BorderBrush="Black" BorderThickness="1" Margin="68,126,226.4,283.2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Intitule}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label_Question" Margin="68,245,845.4,254.2" Content="Saisissez votre question :"/>
+        <TextBox x:Name="textBox_Question" Margin="213,245,226.4,254.2" TextChanged="textBox_Question_TextChanged"/>
+        <Button x:Name="button_AjoutQuestion" Content="Ajouter" Margin="875,245,78.4,254.2" Click="button_AjoutQuestion_Click"/>
+        <ListView x:Name="listView_Reponse" BorderBrush="Black" BorderThickness="1" Margin="68,277,226.4,132.2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Intitule}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label_Reponse" Margin="68,396,859.4,103.2" Content="Saisissez vos réponses :"/>
+        <TextBox x:Name="textBox_AjoutReponse" Margin="213,396,226.4,103.2" TextChanged="textBox_AjoutReponse_TextChanged"/>
+        <Button x:Name="button_AjoutReponse" Margin="875,396,78.4,103.2" Content="Ajouter" Click="button_AjoutReponse_Click"/>
+        <Button x:Name="button_Ajouter" Content="Ajouter" Margin="559,446,340.4,45.2" Click="button_Ajouter_Click"/>
+        <Button x:Name="button_Valider" Content="Valider et Terminer" Margin="311,446,588.4,45.2" Click="button_Valider_Click"/>
+    </Grid>
+</UserControl>

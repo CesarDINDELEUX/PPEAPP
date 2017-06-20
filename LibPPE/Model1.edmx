@@ -1,0 +1,1603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PPE4Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cadeau">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quizz_id" Type="int" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Url_img" Type="longtext" />
+        </EntityType>
+        <EntityType Name="commentaire__enquete">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Commentaire" Type="longtext" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="utilisateur_id" Type="int" />
+          <Property Name="enquete_id" Type="int" />
+        </EntityType>
+        <EntityType Name="commentaire__quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="quizz_id" Type="int" />
+          <Property Name="utilisateur_id" Type="int" />
+          <Property Name="Commentaire" Type="longtext" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="commentaire__sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="utilisateur_id" Type="int" />
+          <Property Name="sondage_id" Type="int" />
+          <Property Name="Commentaire" Type="longtext" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enquete">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="isTermine" Type="bool" />
+          <Property Name="Date_Creation" Type="date" Nullable="false" />
+          <Property Name="Date_Fin" Type="date" />
+        </EntityType>
+        <EntityType Name="equete_theme">
+          <Key>
+            <PropertyRef Name="enquete_id" />
+            <PropertyRef Name="theme_id" />
+          </Key>
+          <Property Name="enquete_id" Type="int" Nullable="false" />
+          <Property Name="theme_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="question__quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="quizz_id" Type="int" />
+        </EntityType>
+        <EntityType Name="question__sequence">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sequence_id" Type="int" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="question__sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sondage_id" Type="int" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="quizz__complet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="utilisateur_id" Type="int" />
+          <Property Name="quizz_id" Type="int" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="QuizzTermine" Type="bool" />
+        </EntityType>
+        <EntityType Name="reponse__quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="question_reponse_id" Type="int" />
+        </EntityType>
+        <EntityType Name="reponse__sequence">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question_reponse_id" Type="int" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reponse__sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="question_reponse_id" Type="int" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reponse_sequence_utilisateur">
+          <Key>
+            <PropertyRef Name="utilisateur_id" />
+            <PropertyRef Name="reponse_sequence_id" />
+          </Key>
+          <Property Name="utilisateur_id" Type="int" Nullable="false" />
+          <Property Name="reponse_sequence_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reponse_utilisateur">
+          <Key>
+            <PropertyRef Name="utilisateur_id" />
+            <PropertyRef Name="reponse_sondage_id" />
+          </Key>
+          <Property Name="utilisateur_id" Type="int" Nullable="false" />
+          <Property Name="reponse_sondage_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reponses_quizz">
+          <Key>
+            <PropertyRef Name="reponse_quizz_id" />
+            <PropertyRef Name="utilisateur_id" />
+          </Key>
+          <Property Name="reponse_quizz_id" Type="int" Nullable="false" />
+          <Property Name="utilisateur_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sequence">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="enquete_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitule" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date_Creation" Type="date" Nullable="false" />
+          <Property Name="isTermine" Type="bool" />
+          <Property Name="Date_Fin" Type="date" />
+        </EntityType>
+        <EntityType Name="sondage__complet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="utilisateur_id" Type="int" />
+          <Property Name="sondage_id" Type="int" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="isTermine" Type="bool" />
+        </EntityType>
+        <EntityType Name="sondage_theme">
+          <Key>
+            <PropertyRef Name="sondage_id" />
+            <PropertyRef Name="theme_id" />
+          </Key>
+          <Property Name="sondage_id" Type="int" Nullable="false" />
+          <Property Name="theme_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="theme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intutile" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="theme_theme">
+          <Key>
+            <PropertyRef Name="theme_source" />
+            <PropertyRef Name="theme_target" />
+          </Key>
+          <Property Name="theme_source" Type="int" Nullable="false" />
+          <Property Name="theme_target" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="255" />
+          <Property Name="Prenom" Type="varchar" MaxLength="255" />
+          <Property Name="Mail" Type="varchar" MaxLength="255" />
+          <Property Name="Login" Type="varchar" MaxLength="255" />
+          <Property Name="Password" Type="varchar" MaxLength="255" />
+          <Property Name="IP" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Port" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_14B756B6A78D805A">
+          <End Role="reponse__sondage" Type="Self.reponse__sondage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reponse_utilisateur" Type="Self.reponse_utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reponse__sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse_utilisateur">
+              <PropertyRef Name="reponse_sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_14B756B6FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reponse_utilisateur" Type="Self.reponse_utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse_utilisateur">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_1EDA4390BAF4AE56">
+          <End Role="sondage" Type="Self.sondage" Multiplicity="0..1" />
+          <End Role="sondage__complet" Type="Self.sondage__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sondage__complet">
+              <PropertyRef Name="sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_1EDA4390FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="sondage__complet" Type="Self.sondage__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sondage__complet">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_221BA238A8CC240A">
+          <End Role="question__quizz" Type="Self.question__quizz" Multiplicity="0..1" />
+          <End Role="reponse__quizz" Type="Self.reponse__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question__quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse__quizz">
+              <PropertyRef Name="question_reponse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_2A06F1D0E51FC4BA">
+          <End Role="reponse__quizz" Type="Self.reponse__quizz" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reponses_quizz" Type="Self.reponses_quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reponse__quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponses_quizz">
+              <PropertyRef Name="reponse_quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_2A06F1D0FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reponses_quizz" Type="Self.reponses_quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponses_quizz">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_2FBE2205BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="quizz__complet" Type="Self.quizz__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="quizz__complet">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_2FBE2205FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="quizz__complet" Type="Self.quizz__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="quizz__complet">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_3D213460BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="cadeau" Type="Self.cadeau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cadeau">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_508142885FDC5003">
+          <End Role="enquete" Type="Self.enquete" Multiplicity="0..1" />
+          <End Role="commentaire__enquete" Type="Self.commentaire__enquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__enquete">
+              <PropertyRef Name="enquete_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_50814288FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="commentaire__enquete" Type="Self.commentaire__enquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__enquete">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5286D72B5FDC5003">
+          <End Role="enquete" Type="Self.enquete" Multiplicity="0..1" />
+          <End Role="sequence" Type="Self.sequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sequence">
+              <PropertyRef Name="enquete_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5EBDA695A8CC240A">
+          <End Role="question__sondage" Type="Self.question__sondage" Multiplicity="0..1" />
+          <End Role="reponse__sondage" Type="Self.reponse__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question__sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse__sondage">
+              <PropertyRef Name="question_reponse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5EC08D3F91502CAB">
+          <End Role="reponse__sequence" Type="Self.reponse__sequence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reponse_sequence_utilisateur" Type="Self.reponse_sequence_utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="reponse__sequence">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse_sequence_utilisateur">
+              <PropertyRef Name="reponse_sequence_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5EC08D3FFB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="reponse_sequence_utilisateur" Type="Self.reponse_sequence_utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse_sequence_utilisateur">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_623999EEBAF4AE56">
+          <End Role="sondage" Type="Self.sondage" Multiplicity="0..1" />
+          <End Role="question__sondage" Type="Self.question__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question__sondage">
+              <PropertyRef Name="sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_6C1549B559027487">
+          <End Role="theme" Type="Self.theme" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sondage_theme" Type="Self.sondage_theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sondage_theme">
+              <PropertyRef Name="theme_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_6C1549B5BAF4AE56">
+          <End Role="sondage" Type="Self.sondage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sondage_theme" Type="Self.sondage_theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sondage_theme">
+              <PropertyRef Name="sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_7593D6D098FB19AE">
+          <End Role="sequence" Type="Self.sequence" Multiplicity="0..1" />
+          <End Role="question__sequence" Type="Self.question__sequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sequence">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question__sequence">
+              <PropertyRef Name="sequence_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AF078C6C59027487">
+          <End Role="theme" Type="Self.theme" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="equete_theme" Type="Self.equete_theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equete_theme">
+              <PropertyRef Name="theme_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AF078C6C5FDC5003">
+          <End Role="enquete" Type="Self.enquete" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="equete_theme" Type="Self.equete_theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="equete_theme">
+              <PropertyRef Name="enquete_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B278FA5BA8CC240A">
+          <End Role="question__sequence" Type="Self.question__sequence" Multiplicity="0..1" />
+          <End Role="reponse__sequence" Type="Self.reponse__sequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question__sequence">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse__sequence">
+              <PropertyRef Name="question_reponse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CF576CED8FB24B0F">
+          <End Role="theme" Type="Self.theme" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="theme_theme" Type="Self.theme_theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="theme_theme">
+              <PropertyRef Name="theme_source" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CF576CED96571B80">
+          <End Role="theme" Type="Self.theme" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="theme_theme" Type="Self.theme_theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="theme_theme">
+              <PropertyRef Name="theme_target" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_E2CBAB26BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="commentaire__quizz" Type="Self.commentaire__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__quizz">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_E2CBAB26FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="commentaire__quizz" Type="Self.commentaire__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__quizz">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_F11254A9BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="question__quizz" Type="Self.question__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question__quizz">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_F320E13EBAF4AE56">
+          <End Role="sondage" Type="Self.sondage" Multiplicity="0..1" />
+          <End Role="commentaire__sondage" Type="Self.commentaire__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__sondage">
+              <PropertyRef Name="sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_F320E13EFB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="commentaire__sondage" Type="Self.commentaire__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__sondage">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PPE4ModelStoreContainer">
+          <EntitySet Name="Administrateur" EntityType="Self.Administrateur" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="cadeau" EntityType="Self.cadeau" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="commentaire__enquete" EntityType="Self.commentaire__enquete" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="commentaire__quizz" EntityType="Self.commentaire__quizz" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="commentaire__sondage" EntityType="Self.commentaire__sondage" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="enquete" EntityType="Self.enquete" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="equete_theme" EntityType="Self.equete_theme" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="question__quizz" EntityType="Self.question__quizz" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="question__sequence" EntityType="Self.question__sequence" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="question__sondage" EntityType="Self.question__sondage" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="quizz" EntityType="Self.quizz" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="quizz__complet" EntityType="Self.quizz__complet" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="reponse__quizz" EntityType="Self.reponse__quizz" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="reponse__sequence" EntityType="Self.reponse__sequence" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="reponse__sondage" EntityType="Self.reponse__sondage" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="reponse_sequence_utilisateur" EntityType="Self.reponse_sequence_utilisateur" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="reponse_utilisateur" EntityType="Self.reponse_utilisateur" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="reponses_quizz" EntityType="Self.reponses_quizz" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="sequence" EntityType="Self.sequence" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="sondage" EntityType="Self.sondage" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="sondage__complet" EntityType="Self.sondage__complet" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="sondage_theme" EntityType="Self.sondage_theme" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="theme" EntityType="Self.theme" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="theme_theme" EntityType="Self.theme_theme" Schema="ppe4" store:Type="Tables" />
+          <EntitySet Name="utilisateur" EntityType="Self.utilisateur" Schema="ppe4" store:Type="Tables" />
+          <AssociationSet Name="FK_14B756B6A78D805A" Association="Self.FK_14B756B6A78D805A">
+            <End Role="reponse__sondage" EntitySet="reponse__sondage" />
+            <End Role="reponse_utilisateur" EntitySet="reponse_utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_14B756B6FB88E14F" Association="Self.FK_14B756B6FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="reponse_utilisateur" EntitySet="reponse_utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_1EDA4390BAF4AE56" Association="Self.FK_1EDA4390BAF4AE56">
+            <End Role="sondage" EntitySet="sondage" />
+            <End Role="sondage__complet" EntitySet="sondage__complet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_1EDA4390FB88E14F" Association="Self.FK_1EDA4390FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="sondage__complet" EntitySet="sondage__complet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_221BA238A8CC240A" Association="Self.FK_221BA238A8CC240A">
+            <End Role="question__quizz" EntitySet="question__quizz" />
+            <End Role="reponse__quizz" EntitySet="reponse__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_2A06F1D0E51FC4BA" Association="Self.FK_2A06F1D0E51FC4BA">
+            <End Role="reponse__quizz" EntitySet="reponse__quizz" />
+            <End Role="reponses_quizz" EntitySet="reponses_quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_2A06F1D0FB88E14F" Association="Self.FK_2A06F1D0FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="reponses_quizz" EntitySet="reponses_quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_2FBE2205BA934BCD" Association="Self.FK_2FBE2205BA934BCD">
+            <End Role="quizz" EntitySet="quizz" />
+            <End Role="quizz__complet" EntitySet="quizz__complet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_2FBE2205FB88E14F" Association="Self.FK_2FBE2205FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="quizz__complet" EntitySet="quizz__complet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_3D213460BA934BCD" Association="Self.FK_3D213460BA934BCD">
+            <End Role="quizz" EntitySet="quizz" />
+            <End Role="cadeau" EntitySet="cadeau" />
+          </AssociationSet>
+          <AssociationSet Name="FK_508142885FDC5003" Association="Self.FK_508142885FDC5003">
+            <End Role="enquete" EntitySet="enquete" />
+            <End Role="commentaire__enquete" EntitySet="commentaire__enquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_50814288FB88E14F" Association="Self.FK_50814288FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="commentaire__enquete" EntitySet="commentaire__enquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5286D72B5FDC5003" Association="Self.FK_5286D72B5FDC5003">
+            <End Role="enquete" EntitySet="enquete" />
+            <End Role="sequence" EntitySet="sequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5EBDA695A8CC240A" Association="Self.FK_5EBDA695A8CC240A">
+            <End Role="question__sondage" EntitySet="question__sondage" />
+            <End Role="reponse__sondage" EntitySet="reponse__sondage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5EC08D3F91502CAB" Association="Self.FK_5EC08D3F91502CAB">
+            <End Role="reponse__sequence" EntitySet="reponse__sequence" />
+            <End Role="reponse_sequence_utilisateur" EntitySet="reponse_sequence_utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5EC08D3FFB88E14F" Association="Self.FK_5EC08D3FFB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="reponse_sequence_utilisateur" EntitySet="reponse_sequence_utilisateur" />
+          </AssociationSet>
+          <AssociationSet Name="FK_623999EEBAF4AE56" Association="Self.FK_623999EEBAF4AE56">
+            <End Role="sondage" EntitySet="sondage" />
+            <End Role="question__sondage" EntitySet="question__sondage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_6C1549B559027487" Association="Self.FK_6C1549B559027487">
+            <End Role="theme" EntitySet="theme" />
+            <End Role="sondage_theme" EntitySet="sondage_theme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_6C1549B5BAF4AE56" Association="Self.FK_6C1549B5BAF4AE56">
+            <End Role="sondage" EntitySet="sondage" />
+            <End Role="sondage_theme" EntitySet="sondage_theme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_7593D6D098FB19AE" Association="Self.FK_7593D6D098FB19AE">
+            <End Role="sequence" EntitySet="sequence" />
+            <End Role="question__sequence" EntitySet="question__sequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AF078C6C59027487" Association="Self.FK_AF078C6C59027487">
+            <End Role="theme" EntitySet="theme" />
+            <End Role="equete_theme" EntitySet="equete_theme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AF078C6C5FDC5003" Association="Self.FK_AF078C6C5FDC5003">
+            <End Role="enquete" EntitySet="enquete" />
+            <End Role="equete_theme" EntitySet="equete_theme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B278FA5BA8CC240A" Association="Self.FK_B278FA5BA8CC240A">
+            <End Role="question__sequence" EntitySet="question__sequence" />
+            <End Role="reponse__sequence" EntitySet="reponse__sequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CF576CED8FB24B0F" Association="Self.FK_CF576CED8FB24B0F">
+            <End Role="theme" EntitySet="theme" />
+            <End Role="theme_theme" EntitySet="theme_theme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CF576CED96571B80" Association="Self.FK_CF576CED96571B80">
+            <End Role="theme" EntitySet="theme" />
+            <End Role="theme_theme" EntitySet="theme_theme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_E2CBAB26BA934BCD" Association="Self.FK_E2CBAB26BA934BCD">
+            <End Role="quizz" EntitySet="quizz" />
+            <End Role="commentaire__quizz" EntitySet="commentaire__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_E2CBAB26FB88E14F" Association="Self.FK_E2CBAB26FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="commentaire__quizz" EntitySet="commentaire__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_F11254A9BA934BCD" Association="Self.FK_F11254A9BA934BCD">
+            <End Role="quizz" EntitySet="quizz" />
+            <End Role="question__quizz" EntitySet="question__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_F320E13EBAF4AE56" Association="Self.FK_F320E13EBAF4AE56">
+            <End Role="sondage" EntitySet="sondage" />
+            <End Role="commentaire__sondage" EntitySet="commentaire__sondage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_F320E13EFB88E14F" Association="Self.FK_F320E13EFB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateur" />
+            <End Role="commentaire__sondage" EntitySet="commentaire__sondage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PPE4Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cadeau">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quizz_id" Type="Int32" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Url_img" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="quizz" Relationship="Self.FK_3D213460BA934BCD" FromRole="cadeau" ToRole="quizz" />
+        </EntityType>
+        <EntityType Name="commentaire__enquete">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Commentaire" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="utilisateur_id" Type="Int32" />
+          <Property Name="enquete_id" Type="Int32" />
+          <NavigationProperty Name="enquete" Relationship="Self.FK_508142885FDC5003" FromRole="commentaire__enquete" ToRole="enquete" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_50814288FB88E14F" FromRole="commentaire__enquete" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="commentaire__quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="quizz_id" Type="Int32" />
+          <Property Name="utilisateur_id" Type="Int32" />
+          <Property Name="Commentaire" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="quizz" Relationship="Self.FK_E2CBAB26BA934BCD" FromRole="commentaire__quizz" ToRole="quizz" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_E2CBAB26FB88E14F" FromRole="commentaire__quizz" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="commentaire__sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="utilisateur_id" Type="Int32" />
+          <Property Name="sondage_id" Type="Int32" />
+          <Property Name="Commentaire" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="sondage" Relationship="Self.FK_F320E13EBAF4AE56" FromRole="commentaire__sondage" ToRole="sondage" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_F320E13EFB88E14F" FromRole="commentaire__sondage" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="enquete">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isTermine" Type="Boolean" />
+          <Property Name="Date_Creation" Type="DateTime" Nullable="false" />
+          <Property Name="Date_Fin" Type="DateTime" />
+          <NavigationProperty Name="commentaire__enquete" Relationship="Self.FK_508142885FDC5003" FromRole="enquete" ToRole="commentaire__enquete" />
+          <NavigationProperty Name="sequences" Relationship="Self.FK_5286D72B5FDC5003" FromRole="enquete" ToRole="sequence" />
+          <NavigationProperty Name="themes" Relationship="Self.equete_theme" FromRole="enquete" ToRole="theme" />
+        </EntityType>
+        <EntityType Name="question__quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quizz_id" Type="Int32" />
+          <NavigationProperty Name="reponse__quizz" Relationship="Self.FK_221BA238A8CC240A" FromRole="question__quizz" ToRole="reponse__quizz" />
+          <NavigationProperty Name="quizz" Relationship="Self.FK_F11254A9BA934BCD" FromRole="question__quizz" ToRole="quizz" />
+        </EntityType>
+        <EntityType Name="question__sequence">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sequence_id" Type="Int32" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="sequence" Relationship="Self.FK_7593D6D098FB19AE" FromRole="question__sequence" ToRole="sequence" />
+          <NavigationProperty Name="reponse__sequence" Relationship="Self.FK_B278FA5BA8CC240A" FromRole="question__sequence" ToRole="reponse__sequence" />
+        </EntityType>
+        <EntityType Name="question__sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sondage_id" Type="Int32" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="reponse__sondage" Relationship="Self.FK_5EBDA695A8CC240A" FromRole="question__sondage" ToRole="reponse__sondage" />
+          <NavigationProperty Name="sondage" Relationship="Self.FK_623999EEBAF4AE56" FromRole="question__sondage" ToRole="sondage" />
+        </EntityType>
+        <EntityType Name="quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="cadeaux" Relationship="Self.FK_3D213460BA934BCD" FromRole="quizz" ToRole="cadeau" />
+          <NavigationProperty Name="commentaire__quizz" Relationship="Self.FK_E2CBAB26BA934BCD" FromRole="quizz" ToRole="commentaire__quizz" />
+          <NavigationProperty Name="question__quizz" Relationship="Self.FK_F11254A9BA934BCD" FromRole="quizz" ToRole="question__quizz" />
+          <NavigationProperty Name="quizz__complet" Relationship="Self.FK_2FBE2205BA934BCD" FromRole="quizz" ToRole="quizz__complet" />
+        </EntityType>
+        <EntityType Name="quizz__complet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="utilisateur_id" Type="Int32" />
+          <Property Name="quizz_id" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="QuizzTermine" Type="Boolean" />
+          <NavigationProperty Name="quizz" Relationship="Self.FK_2FBE2205BA934BCD" FromRole="quizz__complet" ToRole="quizz" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_2FBE2205FB88E14F" FromRole="quizz__complet" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="reponse__quizz">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="question_reponse_id" Type="Int32" />
+          <NavigationProperty Name="question__quizz" Relationship="Self.FK_221BA238A8CC240A" FromRole="reponse__quizz" ToRole="question__quizz" />
+          <NavigationProperty Name="utilisateurs" Relationship="Self.reponses_quizz" FromRole="reponse__quizz" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="reponse__sequence">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question_reponse_id" Type="Int32" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="question__sequence" Relationship="Self.FK_B278FA5BA8CC240A" FromRole="reponse__sequence" ToRole="question__sequence" />
+          <NavigationProperty Name="utilisateurs" Relationship="Self.reponse_sequence_utilisateur" FromRole="reponse__sequence" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="reponse__sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="question_reponse_id" Type="Int32" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="question__sondage" Relationship="Self.FK_5EBDA695A8CC240A" FromRole="reponse__sondage" ToRole="question__sondage" />
+          <NavigationProperty Name="utilisateurs" Relationship="Self.reponse_utilisateur" FromRole="reponse__sondage" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="sequence">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="enquete_id" Type="Int32" />
+          <NavigationProperty Name="enquete" Relationship="Self.FK_5286D72B5FDC5003" FromRole="sequence" ToRole="enquete" />
+          <NavigationProperty Name="question__sequence" Relationship="Self.FK_7593D6D098FB19AE" FromRole="sequence" ToRole="question__sequence" />
+        </EntityType>
+        <EntityType Name="sondage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitule" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_Creation" Type="DateTime" Nullable="false" />
+          <Property Name="isTermine" Type="Boolean" />
+          <Property Name="Date_Fin" Type="DateTime" />
+          <NavigationProperty Name="commentaire__sondage" Relationship="Self.FK_F320E13EBAF4AE56" FromRole="sondage" ToRole="commentaire__sondage" />
+          <NavigationProperty Name="question__sondage" Relationship="Self.FK_623999EEBAF4AE56" FromRole="sondage" ToRole="question__sondage" />
+          <NavigationProperty Name="sondage__complet" Relationship="Self.FK_1EDA4390BAF4AE56" FromRole="sondage" ToRole="sondage__complet" />
+          <NavigationProperty Name="themes" Relationship="Self.sondage_theme" FromRole="sondage" ToRole="theme" />
+        </EntityType>
+        <EntityType Name="sondage__complet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="utilisateur_id" Type="Int32" />
+          <Property Name="sondage_id" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="isTermine" Type="Boolean" />
+          <NavigationProperty Name="sondage" Relationship="Self.FK_1EDA4390BAF4AE56" FromRole="sondage__complet" ToRole="sondage" />
+          <NavigationProperty Name="utilisateur" Relationship="Self.FK_1EDA4390FB88E14F" FromRole="sondage__complet" ToRole="utilisateur" />
+        </EntityType>
+        <EntityType Name="theme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intutile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="enquetes" Relationship="Self.equete_theme" FromRole="theme" ToRole="enquete" />
+          <NavigationProperty Name="sondages" Relationship="Self.sondage_theme" FromRole="theme" ToRole="sondage" />
+          <NavigationProperty Name="theme1" Relationship="Self.theme_theme" FromRole="theme" ToRole="theme1" />
+          <NavigationProperty Name="themes" Relationship="Self.theme_theme" FromRole="theme1" ToRole="theme" />
+        </EntityType>
+        <EntityType Name="utilisateur">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Prenom" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Login" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Port" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="commentaire__enquete" Relationship="Self.FK_50814288FB88E14F" FromRole="utilisateur" ToRole="commentaire__enquete" />
+          <NavigationProperty Name="commentaire__quizz" Relationship="Self.FK_E2CBAB26FB88E14F" FromRole="utilisateur" ToRole="commentaire__quizz" />
+          <NavigationProperty Name="commentaire__sondage" Relationship="Self.FK_F320E13EFB88E14F" FromRole="utilisateur" ToRole="commentaire__sondage" />
+          <NavigationProperty Name="quizz__complet" Relationship="Self.FK_2FBE2205FB88E14F" FromRole="utilisateur" ToRole="quizz__complet" />
+          <NavigationProperty Name="sondage__complet" Relationship="Self.FK_1EDA4390FB88E14F" FromRole="utilisateur" ToRole="sondage__complet" />
+          <NavigationProperty Name="reponse__sequence" Relationship="Self.reponse_sequence_utilisateur" FromRole="utilisateur" ToRole="reponse__sequence" />
+          <NavigationProperty Name="reponse__sondage" Relationship="Self.reponse_utilisateur" FromRole="utilisateur" ToRole="reponse__sondage" />
+          <NavigationProperty Name="reponse__quizz" Relationship="Self.reponses_quizz" FromRole="utilisateur" ToRole="reponse__quizz" />
+        </EntityType>
+        <Association Name="FK_3D213460BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="cadeau" Type="Self.cadeau" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="cadeau">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_508142885FDC5003">
+          <End Role="enquete" Type="Self.enquete" Multiplicity="0..1" />
+          <End Role="commentaire__enquete" Type="Self.commentaire__enquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__enquete">
+              <PropertyRef Name="enquete_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_50814288FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="commentaire__enquete" Type="Self.commentaire__enquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__enquete">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_E2CBAB26BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="commentaire__quizz" Type="Self.commentaire__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__quizz">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_E2CBAB26FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="commentaire__quizz" Type="Self.commentaire__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__quizz">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_F320E13EBAF4AE56">
+          <End Role="sondage" Type="Self.sondage" Multiplicity="0..1" />
+          <End Role="commentaire__sondage" Type="Self.commentaire__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__sondage">
+              <PropertyRef Name="sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_F320E13EFB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="commentaire__sondage" Type="Self.commentaire__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="commentaire__sondage">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5286D72B5FDC5003">
+          <End Role="enquete" Type="Self.enquete" Multiplicity="0..1" />
+          <End Role="sequence" Type="Self.sequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enquete">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sequence">
+              <PropertyRef Name="enquete_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_221BA238A8CC240A">
+          <End Role="question__quizz" Type="Self.question__quizz" Multiplicity="0..1" />
+          <End Role="reponse__quizz" Type="Self.reponse__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question__quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse__quizz">
+              <PropertyRef Name="question_reponse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_F11254A9BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="question__quizz" Type="Self.question__quizz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question__quizz">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_7593D6D098FB19AE">
+          <End Role="sequence" Type="Self.sequence" Multiplicity="0..1" />
+          <End Role="question__sequence" Type="Self.question__sequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sequence">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question__sequence">
+              <PropertyRef Name="sequence_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_B278FA5BA8CC240A">
+          <End Role="question__sequence" Type="Self.question__sequence" Multiplicity="0..1" />
+          <End Role="reponse__sequence" Type="Self.reponse__sequence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question__sequence">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse__sequence">
+              <PropertyRef Name="question_reponse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_5EBDA695A8CC240A">
+          <End Role="question__sondage" Type="Self.question__sondage" Multiplicity="0..1" />
+          <End Role="reponse__sondage" Type="Self.reponse__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question__sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="reponse__sondage">
+              <PropertyRef Name="question_reponse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_623999EEBAF4AE56">
+          <End Role="sondage" Type="Self.sondage" Multiplicity="0..1" />
+          <End Role="question__sondage" Type="Self.question__sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="question__sondage">
+              <PropertyRef Name="sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_2FBE2205BA934BCD">
+          <End Role="quizz" Type="Self.quizz" Multiplicity="0..1" />
+          <End Role="quizz__complet" Type="Self.quizz__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="quizz">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="quizz__complet">
+              <PropertyRef Name="quizz_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_2FBE2205FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="quizz__complet" Type="Self.quizz__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="quizz__complet">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_1EDA4390BAF4AE56">
+          <End Role="sondage" Type="Self.sondage" Multiplicity="0..1" />
+          <End Role="sondage__complet" Type="Self.sondage__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sondage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sondage__complet">
+              <PropertyRef Name="sondage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_1EDA4390FB88E14F">
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="0..1" />
+          <End Role="sondage__complet" Type="Self.sondage__complet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utilisateur">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sondage__complet">
+              <PropertyRef Name="utilisateur_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="equete_theme">
+          <End Role="theme" Type="Self.theme" Multiplicity="*" />
+          <End Role="enquete" Type="Self.enquete" Multiplicity="*" />
+        </Association>
+        <Association Name="reponse_sequence_utilisateur">
+          <End Role="reponse__sequence" Type="Self.reponse__sequence" Multiplicity="*" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="*" />
+        </Association>
+        <Association Name="reponse_utilisateur">
+          <End Role="reponse__sondage" Type="Self.reponse__sondage" Multiplicity="*" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="*" />
+        </Association>
+        <Association Name="reponses_quizz">
+          <End Role="reponse__quizz" Type="Self.reponse__quizz" Multiplicity="*" />
+          <End Role="utilisateur" Type="Self.utilisateur" Multiplicity="*" />
+        </Association>
+        <Association Name="sondage_theme">
+          <End Role="theme" Type="Self.theme" Multiplicity="*" />
+          <End Role="sondage" Type="Self.sondage" Multiplicity="*" />
+        </Association>
+        <Association Name="theme_theme">
+          <End Role="theme" Type="Self.theme" Multiplicity="*" />
+          <End Role="theme1" Type="Self.theme" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PPE4Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrateurs" EntityType="Self.Administrateur" />
+          <EntitySet Name="cadeaux" EntityType="Self.cadeau" />
+          <EntitySet Name="commentaire__enquete" EntityType="Self.commentaire__enquete" />
+          <EntitySet Name="commentaire__quizz" EntityType="Self.commentaire__quizz" />
+          <EntitySet Name="commentaire__sondage" EntityType="Self.commentaire__sondage" />
+          <EntitySet Name="enquetes" EntityType="Self.enquete" />
+          <EntitySet Name="question__quizz" EntityType="Self.question__quizz" />
+          <EntitySet Name="question__sequence" EntityType="Self.question__sequence" />
+          <EntitySet Name="question__sondage" EntityType="Self.question__sondage" />
+          <EntitySet Name="quizzs" EntityType="Self.quizz" />
+          <EntitySet Name="quizz__complet" EntityType="Self.quizz__complet" />
+          <EntitySet Name="reponse__quizz" EntityType="Self.reponse__quizz" />
+          <EntitySet Name="reponse__sequence" EntityType="Self.reponse__sequence" />
+          <EntitySet Name="reponse__sondage" EntityType="Self.reponse__sondage" />
+          <EntitySet Name="sequences" EntityType="Self.sequence" />
+          <EntitySet Name="sondages" EntityType="Self.sondage" />
+          <EntitySet Name="sondage__complet" EntityType="Self.sondage__complet" />
+          <EntitySet Name="themes" EntityType="Self.theme" />
+          <EntitySet Name="utilisateurs" EntityType="Self.utilisateur" />
+          <AssociationSet Name="FK_3D213460BA934BCD" Association="Self.FK_3D213460BA934BCD">
+            <End Role="quizz" EntitySet="quizzs" />
+            <End Role="cadeau" EntitySet="cadeaux" />
+          </AssociationSet>
+          <AssociationSet Name="FK_508142885FDC5003" Association="Self.FK_508142885FDC5003">
+            <End Role="enquete" EntitySet="enquetes" />
+            <End Role="commentaire__enquete" EntitySet="commentaire__enquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_50814288FB88E14F" Association="Self.FK_50814288FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+            <End Role="commentaire__enquete" EntitySet="commentaire__enquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_E2CBAB26BA934BCD" Association="Self.FK_E2CBAB26BA934BCD">
+            <End Role="quizz" EntitySet="quizzs" />
+            <End Role="commentaire__quizz" EntitySet="commentaire__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_E2CBAB26FB88E14F" Association="Self.FK_E2CBAB26FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+            <End Role="commentaire__quizz" EntitySet="commentaire__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_F320E13EBAF4AE56" Association="Self.FK_F320E13EBAF4AE56">
+            <End Role="sondage" EntitySet="sondages" />
+            <End Role="commentaire__sondage" EntitySet="commentaire__sondage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_F320E13EFB88E14F" Association="Self.FK_F320E13EFB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+            <End Role="commentaire__sondage" EntitySet="commentaire__sondage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5286D72B5FDC5003" Association="Self.FK_5286D72B5FDC5003">
+            <End Role="enquete" EntitySet="enquetes" />
+            <End Role="sequence" EntitySet="sequences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_221BA238A8CC240A" Association="Self.FK_221BA238A8CC240A">
+            <End Role="question__quizz" EntitySet="question__quizz" />
+            <End Role="reponse__quizz" EntitySet="reponse__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_F11254A9BA934BCD" Association="Self.FK_F11254A9BA934BCD">
+            <End Role="quizz" EntitySet="quizzs" />
+            <End Role="question__quizz" EntitySet="question__quizz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_7593D6D098FB19AE" Association="Self.FK_7593D6D098FB19AE">
+            <End Role="sequence" EntitySet="sequences" />
+            <End Role="question__sequence" EntitySet="question__sequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_B278FA5BA8CC240A" Association="Self.FK_B278FA5BA8CC240A">
+            <End Role="question__sequence" EntitySet="question__sequence" />
+            <End Role="reponse__sequence" EntitySet="reponse__sequence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_5EBDA695A8CC240A" Association="Self.FK_5EBDA695A8CC240A">
+            <End Role="question__sondage" EntitySet="question__sondage" />
+            <End Role="reponse__sondage" EntitySet="reponse__sondage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_623999EEBAF4AE56" Association="Self.FK_623999EEBAF4AE56">
+            <End Role="sondage" EntitySet="sondages" />
+            <End Role="question__sondage" EntitySet="question__sondage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_2FBE2205BA934BCD" Association="Self.FK_2FBE2205BA934BCD">
+            <End Role="quizz" EntitySet="quizzs" />
+            <End Role="quizz__complet" EntitySet="quizz__complet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_2FBE2205FB88E14F" Association="Self.FK_2FBE2205FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+            <End Role="quizz__complet" EntitySet="quizz__complet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_1EDA4390BAF4AE56" Association="Self.FK_1EDA4390BAF4AE56">
+            <End Role="sondage" EntitySet="sondages" />
+            <End Role="sondage__complet" EntitySet="sondage__complet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_1EDA4390FB88E14F" Association="Self.FK_1EDA4390FB88E14F">
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+            <End Role="sondage__complet" EntitySet="sondage__complet" />
+          </AssociationSet>
+          <AssociationSet Name="equete_theme" Association="Self.equete_theme">
+            <End Role="theme" EntitySet="themes" />
+            <End Role="enquete" EntitySet="enquetes" />
+          </AssociationSet>
+          <AssociationSet Name="reponse_sequence_utilisateur" Association="Self.reponse_sequence_utilisateur">
+            <End Role="reponse__sequence" EntitySet="reponse__sequence" />
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="reponse_utilisateur" Association="Self.reponse_utilisateur">
+            <End Role="reponse__sondage" EntitySet="reponse__sondage" />
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="reponses_quizz" Association="Self.reponses_quizz">
+            <End Role="reponse__quizz" EntitySet="reponse__quizz" />
+            <End Role="utilisateur" EntitySet="utilisateurs" />
+          </AssociationSet>
+          <AssociationSet Name="sondage_theme" Association="Self.sondage_theme">
+            <End Role="theme" EntitySet="themes" />
+            <End Role="sondage" EntitySet="sondages" />
+          </AssociationSet>
+          <AssociationSet Name="theme_theme" Association="Self.theme_theme">
+            <End Role="theme" EntitySet="themes" />
+            <End Role="theme1" EntitySet="themes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PPE4ModelStoreContainer" CdmEntityContainer="PPE4Entities">
+          <EntitySetMapping Name="Administrateurs">
+            <EntityTypeMapping TypeName="PPE4Model.Administrateur">
+              <MappingFragment StoreEntitySet="Administrateur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cadeaux">
+            <EntityTypeMapping TypeName="PPE4Model.cadeau">
+              <MappingFragment StoreEntitySet="cadeau">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="quizz_id" ColumnName="quizz_id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+                <ScalarProperty Name="Url_img" ColumnName="Url_img" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commentaire__enquete">
+            <EntityTypeMapping TypeName="PPE4Model.commentaire__enquete">
+              <MappingFragment StoreEntitySet="commentaire__enquete">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="utilisateur_id" ColumnName="utilisateur_id" />
+                <ScalarProperty Name="enquete_id" ColumnName="enquete_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commentaire__quizz">
+            <EntityTypeMapping TypeName="PPE4Model.commentaire__quizz">
+              <MappingFragment StoreEntitySet="commentaire__quizz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="quizz_id" ColumnName="quizz_id" />
+                <ScalarProperty Name="utilisateur_id" ColumnName="utilisateur_id" />
+                <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="commentaire__sondage">
+            <EntityTypeMapping TypeName="PPE4Model.commentaire__sondage">
+              <MappingFragment StoreEntitySet="commentaire__sondage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="utilisateur_id" ColumnName="utilisateur_id" />
+                <ScalarProperty Name="sondage_id" ColumnName="sondage_id" />
+                <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enquetes">
+            <EntityTypeMapping TypeName="PPE4Model.enquete">
+              <MappingFragment StoreEntitySet="enquete">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+                <ScalarProperty Name="isTermine" ColumnName="isTermine" />
+                <ScalarProperty Name="Date_Creation" ColumnName="Date_Creation" />
+                <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question__quizz">
+            <EntityTypeMapping TypeName="PPE4Model.question__quizz">
+              <MappingFragment StoreEntitySet="question__quizz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+                <ScalarProperty Name="quizz_id" ColumnName="quizz_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question__sequence">
+            <EntityTypeMapping TypeName="PPE4Model.question__sequence">
+              <MappingFragment StoreEntitySet="question__sequence">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sequence_id" ColumnName="sequence_id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="question__sondage">
+            <EntityTypeMapping TypeName="PPE4Model.question__sondage">
+              <MappingFragment StoreEntitySet="question__sondage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sondage_id" ColumnName="sondage_id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quizzs">
+            <EntityTypeMapping TypeName="PPE4Model.quizz">
+              <MappingFragment StoreEntitySet="quizz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="quizz__complet">
+            <EntityTypeMapping TypeName="PPE4Model.quizz__complet">
+              <MappingFragment StoreEntitySet="quizz__complet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="utilisateur_id" ColumnName="utilisateur_id" />
+                <ScalarProperty Name="quizz_id" ColumnName="quizz_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="QuizzTermine" ColumnName="QuizzTermine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reponse__quizz">
+            <EntityTypeMapping TypeName="PPE4Model.reponse__quizz">
+              <MappingFragment StoreEntitySet="reponse__quizz">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+                <ScalarProperty Name="question_reponse_id" ColumnName="question_reponse_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reponse__sequence">
+            <EntityTypeMapping TypeName="PPE4Model.reponse__sequence">
+              <MappingFragment StoreEntitySet="reponse__sequence">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="question_reponse_id" ColumnName="question_reponse_id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reponse__sondage">
+            <EntityTypeMapping TypeName="PPE4Model.reponse__sondage">
+              <MappingFragment StoreEntitySet="reponse__sondage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="question_reponse_id" ColumnName="question_reponse_id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sequences">
+            <EntityTypeMapping TypeName="PPE4Model.sequence">
+              <MappingFragment StoreEntitySet="sequence">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+                <ScalarProperty Name="enquete_id" ColumnName="enquete_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sondages">
+            <EntityTypeMapping TypeName="PPE4Model.sondage">
+              <MappingFragment StoreEntitySet="sondage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intitule" ColumnName="Intitule" />
+                <ScalarProperty Name="Date_Creation" ColumnName="Date_Creation" />
+                <ScalarProperty Name="isTermine" ColumnName="isTermine" />
+                <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sondage__complet">
+            <EntityTypeMapping TypeName="PPE4Model.sondage__complet">
+              <MappingFragment StoreEntitySet="sondage__complet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="utilisateur_id" ColumnName="utilisateur_id" />
+                <ScalarProperty Name="sondage_id" ColumnName="sondage_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="isTermine" ColumnName="isTermine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="themes">
+            <EntityTypeMapping TypeName="PPE4Model.theme">
+              <MappingFragment StoreEntitySet="theme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Intutile" ColumnName="Intutile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utilisateurs">
+            <EntityTypeMapping TypeName="PPE4Model.utilisateur">
+              <MappingFragment StoreEntitySet="utilisateur">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="equete_theme" TypeName="PPE4Model.equete_theme" StoreEntitySet="equete_theme">
+            <EndProperty Name="theme">
+              <ScalarProperty Name="id" ColumnName="theme_id" />
+            </EndProperty>
+            <EndProperty Name="enquete">
+              <ScalarProperty Name="id" ColumnName="enquete_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="reponse_sequence_utilisateur" TypeName="PPE4Model.reponse_sequence_utilisateur" StoreEntitySet="reponse_sequence_utilisateur">
+            <EndProperty Name="reponse__sequence">
+              <ScalarProperty Name="id" ColumnName="reponse_sequence_id" />
+            </EndProperty>
+            <EndProperty Name="utilisateur">
+              <ScalarProperty Name="id" ColumnName="utilisateur_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="reponse_utilisateur" TypeName="PPE4Model.reponse_utilisateur" StoreEntitySet="reponse_utilisateur">
+            <EndProperty Name="reponse__sondage">
+              <ScalarProperty Name="id" ColumnName="reponse_sondage_id" />
+            </EndProperty>
+            <EndProperty Name="utilisateur">
+              <ScalarProperty Name="id" ColumnName="utilisateur_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="reponses_quizz" TypeName="PPE4Model.reponses_quizz" StoreEntitySet="reponses_quizz">
+            <EndProperty Name="reponse__quizz">
+              <ScalarProperty Name="id" ColumnName="reponse_quizz_id" />
+            </EndProperty>
+            <EndProperty Name="utilisateur">
+              <ScalarProperty Name="id" ColumnName="utilisateur_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="sondage_theme" TypeName="PPE4Model.sondage_theme" StoreEntitySet="sondage_theme">
+            <EndProperty Name="theme">
+              <ScalarProperty Name="id" ColumnName="theme_id" />
+            </EndProperty>
+            <EndProperty Name="sondage">
+              <ScalarProperty Name="id" ColumnName="sondage_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="theme_theme" TypeName="PPE4Model.theme_theme" StoreEntitySet="theme_theme">
+            <EndProperty Name="theme">
+              <ScalarProperty Name="id" ColumnName="theme_source" />
+            </EndProperty>
+            <EndProperty Name="theme1">
+              <ScalarProperty Name="id" ColumnName="theme_target" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="PPE.Pages.Thème.AjoutTheme"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="758" d:DesignWidth="1004">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Label x:Name="label_NomTheme" Content="Saisissez le nom du thème à ajouter" Margin="50,39,718,651.4"/>
+        <TextBox x:Name="textBox_NomTheme" Margin="50,99,79,589.4"/>
+        <Label x:Name="label_SousTheme" Content="Ajouter un/des sous-thèmes" Margin="50,156,757,537.4"/>
+        <ListView x:Name="listView_SousTheme" BorderBrush="Black" BorderThickness="1" Margin="50,210,79,250.4"/>
+        <Button x:Name="button_Valider" Content="Valider" Margin="384,575,414,113.4" Click="button_Valider_Click"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,746 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Client :  localhost:3306
+-- Généré le :  Jeu 18 Mai 2017 à 14:34
+-- Version du serveur :  5.5.42
+-- Version de PHP :  5.6.10
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données :  `PPE4`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Administrateur`
+--
+
+CREATE TABLE `Administrateur` (
+  `id` int(11) NOT NULL,
+  `Login` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Administrateur`
+--
+
+INSERT INTO `Administrateur` (`id`, `Login`, `Password`) VALUES
+(1, 'Administrateur', 'Epsi2017!');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cadeau`
+--
+
+CREATE TABLE `cadeau` (
+  `id` int(11) NOT NULL,
+  `quizz_id` int(11) DEFAULT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Url_img` longtext COLLATE utf8_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentaire__enquete`
+--
+
+CREATE TABLE `commentaire__enquete` (
+  `id` int(11) NOT NULL,
+  `Commentaire` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `Date` date NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `enquete_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentaire__quizz`
+--
+
+CREATE TABLE `commentaire__quizz` (
+  `id` int(11) NOT NULL,
+  `quizz_id` int(11) DEFAULT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `Commentaire` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commentaire__sondage`
+--
+
+CREATE TABLE `commentaire__sondage` (
+  `id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `sondage_id` int(11) DEFAULT NULL,
+  `Commentaire` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `enquete`
+--
+
+CREATE TABLE `enquete` (
+  `id` int(11) NOT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `isTermine` tinyint(1) DEFAULT NULL,
+  `Date_Creation` date NOT NULL,
+  `Date_Fin` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `equete_theme`
+--
+
+CREATE TABLE `equete_theme` (
+  `enquete_id` int(11) NOT NULL,
+  `theme_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `question__quizz`
+--
+
+CREATE TABLE `question__quizz` (
+  `id` int(11) NOT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `quizz_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `question__sequence`
+--
+
+CREATE TABLE `question__sequence` (
+  `id` int(11) NOT NULL,
+  `sequence_id` int(11) DEFAULT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `question__sondage`
+--
+
+CREATE TABLE `question__sondage` (
+  `id` int(11) NOT NULL,
+  `sondage_id` int(11) DEFAULT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quizz`
+--
+
+CREATE TABLE `quizz` (
+  `id` int(11) NOT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `quizz__complet`
+--
+
+CREATE TABLE `quizz__complet` (
+  `id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `quizz_id` int(11) DEFAULT NULL,
+  `Date` date NOT NULL,
+  `QuizzTermine` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponses_quizz`
+--
+
+CREATE TABLE `reponses_quizz` (
+  `reponse_quizz_id` int(11) NOT NULL,
+  `utilisateur_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponse_sequence_utilisateur`
+--
+
+CREATE TABLE `reponse_sequence_utilisateur` (
+  `utilisateur_id` int(11) NOT NULL,
+  `reponse_sequence_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponse_utilisateur`
+--
+
+CREATE TABLE `reponse_utilisateur` (
+  `utilisateur_id` int(11) NOT NULL,
+  `reponse_sondage_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponse__quizz`
+--
+
+CREATE TABLE `reponse__quizz` (
+  `id` int(11) NOT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `question_reponse_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponse__sequence`
+--
+
+CREATE TABLE `reponse__sequence` (
+  `id` int(11) NOT NULL,
+  `question_reponse_id` int(11) DEFAULT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reponse__sondage`
+--
+
+CREATE TABLE `reponse__sondage` (
+  `id` int(11) NOT NULL,
+  `question_reponse_id` int(11) DEFAULT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sequence`
+--
+
+CREATE TABLE `sequence` (
+  `id` int(11) NOT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `enquete_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sondage`
+--
+
+CREATE TABLE `sondage` (
+  `id` int(11) NOT NULL,
+  `Intitule` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Date_Creation` date NOT NULL,
+  `isTermine` tinyint(1) DEFAULT NULL,
+  `Date_Fin` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sondage_theme`
+--
+
+CREATE TABLE `sondage_theme` (
+  `sondage_id` int(11) NOT NULL,
+  `theme_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sondage__complet`
+--
+
+CREATE TABLE `sondage__complet` (
+  `id` int(11) NOT NULL,
+  `utilisateur_id` int(11) DEFAULT NULL,
+  `sondage_id` int(11) DEFAULT NULL,
+  `Date` date NOT NULL,
+  `isTermine` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `theme`
+--
+
+CREATE TABLE `theme` (
+  `id` int(11) NOT NULL,
+  `Intutile` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `theme_theme`
+--
+
+CREATE TABLE `theme_theme` (
+  `theme_source` int(11) NOT NULL,
+  `theme_target` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id` int(11) NOT NULL,
+  `Nom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Prenom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Mail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Login` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `Password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `IP` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Port` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `Administrateur`
+--
+ALTER TABLE `Administrateur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `cadeau`
+--
+ALTER TABLE `cadeau`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_3D213460BA934BCD` (`quizz_id`);
+
+--
+-- Index pour la table `commentaire__enquete`
+--
+ALTER TABLE `commentaire__enquete`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_50814288FB88E14F` (`utilisateur_id`),
+  ADD KEY `IDX_508142885FDC5003` (`enquete_id`);
+
+--
+-- Index pour la table `commentaire__quizz`
+--
+ALTER TABLE `commentaire__quizz`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_E2CBAB26BA934BCD` (`quizz_id`),
+  ADD KEY `IDX_E2CBAB26FB88E14F` (`utilisateur_id`);
+
+--
+-- Index pour la table `commentaire__sondage`
+--
+ALTER TABLE `commentaire__sondage`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_F320E13EFB88E14F` (`utilisateur_id`),
+  ADD KEY `IDX_F320E13EBAF4AE56` (`sondage_id`);
+
+--
+-- Index pour la table `enquete`
+--
+ALTER TABLE `enquete`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `equete_theme`
+--
+ALTER TABLE `equete_theme`
+  ADD PRIMARY KEY (`enquete_id`,`theme_id`),
+  ADD KEY `IDX_AF078C6C5FDC5003` (`enquete_id`),
+  ADD KEY `IDX_AF078C6C59027487` (`theme_id`);
+
+--
+-- Index pour la table `question__quizz`
+--
+ALTER TABLE `question__quizz`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_F11254A9BA934BCD` (`quizz_id`);
+
+--
+-- Index pour la table `question__sequence`
+--
+ALTER TABLE `question__sequence`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_7593D6D098FB19AE` (`sequence_id`);
+
+--
+-- Index pour la table `question__sondage`
+--
+ALTER TABLE `question__sondage`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_623999EEBAF4AE56` (`sondage_id`);
+
+--
+-- Index pour la table `quizz`
+--
+ALTER TABLE `quizz`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `quizz__complet`
+--
+ALTER TABLE `quizz__complet`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_2FBE2205FB88E14F` (`utilisateur_id`),
+  ADD KEY `IDX_2FBE2205BA934BCD` (`quizz_id`);
+
+--
+-- Index pour la table `reponses_quizz`
+--
+ALTER TABLE `reponses_quizz`
+  ADD PRIMARY KEY (`reponse_quizz_id`,`utilisateur_id`),
+  ADD KEY `IDX_2A06F1D0E51FC4BA` (`reponse_quizz_id`),
+  ADD KEY `IDX_2A06F1D0FB88E14F` (`utilisateur_id`);
+
+--
+-- Index pour la table `reponse_sequence_utilisateur`
+--
+ALTER TABLE `reponse_sequence_utilisateur`
+  ADD PRIMARY KEY (`utilisateur_id`,`reponse_sequence_id`),
+  ADD KEY `IDX_5EC08D3FFB88E14F` (`utilisateur_id`),
+  ADD KEY `IDX_5EC08D3F91502CAB` (`reponse_sequence_id`);
+
+--
+-- Index pour la table `reponse_utilisateur`
+--
+ALTER TABLE `reponse_utilisateur`
+  ADD PRIMARY KEY (`utilisateur_id`,`reponse_sondage_id`),
+  ADD KEY `IDX_14B756B6FB88E14F` (`utilisateur_id`),
+  ADD KEY `IDX_14B756B6A78D805A` (`reponse_sondage_id`);
+
+--
+-- Index pour la table `reponse__quizz`
+--
+ALTER TABLE `reponse__quizz`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_221BA238A8CC240A` (`question_reponse_id`);
+
+--
+-- Index pour la table `reponse__sequence`
+--
+ALTER TABLE `reponse__sequence`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_B278FA5BA8CC240A` (`question_reponse_id`);
+
+--
+-- Index pour la table `reponse__sondage`
+--
+ALTER TABLE `reponse__sondage`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_5EBDA695A8CC240A` (`question_reponse_id`);
+
+--
+-- Index pour la table `sequence`
+--
+ALTER TABLE `sequence`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_5286D72B5FDC5003` (`enquete_id`);
+
+--
+-- Index pour la table `sondage`
+--
+ALTER TABLE `sondage`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `sondage_theme`
+--
+ALTER TABLE `sondage_theme`
+  ADD PRIMARY KEY (`sondage_id`,`theme_id`),
+  ADD KEY `IDX_6C1549B5BAF4AE56` (`sondage_id`),
+  ADD KEY `IDX_6C1549B559027487` (`theme_id`);
+
+--
+-- Index pour la table `sondage__complet`
+--
+ALTER TABLE `sondage__complet`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `IDX_1EDA4390FB88E14F` (`utilisateur_id`),
+  ADD KEY `IDX_1EDA4390BAF4AE56` (`sondage_id`);
+
+--
+-- Index pour la table `theme`
+--
+ALTER TABLE `theme`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `theme_theme`
+--
+ALTER TABLE `theme_theme`
+  ADD PRIMARY KEY (`theme_source`,`theme_target`),
+  ADD KEY `IDX_CF576CED8FB24B0F` (`theme_source`),
+  ADD KEY `IDX_CF576CED96571B80` (`theme_target`);
+
+--
+-- Index pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `Administrateur`
+--
+ALTER TABLE `Administrateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT pour la table `cadeau`
+--
+ALTER TABLE `cadeau`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `commentaire__enquete`
+--
+ALTER TABLE `commentaire__enquete`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `commentaire__quizz`
+--
+ALTER TABLE `commentaire__quizz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `commentaire__sondage`
+--
+ALTER TABLE `commentaire__sondage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `enquete`
+--
+ALTER TABLE `enquete`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `question__quizz`
+--
+ALTER TABLE `question__quizz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `question__sequence`
+--
+ALTER TABLE `question__sequence`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `question__sondage`
+--
+ALTER TABLE `question__sondage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `quizz`
+--
+ALTER TABLE `quizz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `quizz__complet`
+--
+ALTER TABLE `quizz__complet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `reponse__quizz`
+--
+ALTER TABLE `reponse__quizz`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `reponse__sequence`
+--
+ALTER TABLE `reponse__sequence`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `reponse__sondage`
+--
+ALTER TABLE `reponse__sondage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `sequence`
+--
+ALTER TABLE `sequence`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `sondage`
+--
+ALTER TABLE `sondage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `sondage__complet`
+--
+ALTER TABLE `sondage__complet`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `theme`
+--
+ALTER TABLE `theme`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT pour la table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `cadeau`
+--
+ALTER TABLE `cadeau`
+  ADD CONSTRAINT `FK_3D213460BA934BCD` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`);
+
+--
+-- Contraintes pour la table `commentaire__enquete`
+--
+ALTER TABLE `commentaire__enquete`
+  ADD CONSTRAINT `FK_508142885FDC5003` FOREIGN KEY (`enquete_id`) REFERENCES `enquete` (`id`),
+  ADD CONSTRAINT `FK_50814288FB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `commentaire__quizz`
+--
+ALTER TABLE `commentaire__quizz`
+  ADD CONSTRAINT `FK_E2CBAB26BA934BCD` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`),
+  ADD CONSTRAINT `FK_E2CBAB26FB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `commentaire__sondage`
+--
+ALTER TABLE `commentaire__sondage`
+  ADD CONSTRAINT `FK_F320E13EBAF4AE56` FOREIGN KEY (`sondage_id`) REFERENCES `sondage` (`id`),
+  ADD CONSTRAINT `FK_F320E13EFB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `equete_theme`
+--
+ALTER TABLE `equete_theme`
+  ADD CONSTRAINT `FK_AF078C6C59027487` FOREIGN KEY (`theme_id`) REFERENCES `theme` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_AF078C6C5FDC5003` FOREIGN KEY (`enquete_id`) REFERENCES `enquete` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `question__quizz`
+--
+ALTER TABLE `question__quizz`
+  ADD CONSTRAINT `FK_F11254A9BA934BCD` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`);
+
+--
+-- Contraintes pour la table `question__sequence`
+--
+ALTER TABLE `question__sequence`
+  ADD CONSTRAINT `FK_7593D6D098FB19AE` FOREIGN KEY (`sequence_id`) REFERENCES `sequence` (`id`);
+
+--
+-- Contraintes pour la table `question__sondage`
+--
+ALTER TABLE `question__sondage`
+  ADD CONSTRAINT `FK_623999EEBAF4AE56` FOREIGN KEY (`sondage_id`) REFERENCES `sondage` (`id`);
+
+--
+-- Contraintes pour la table `quizz__complet`
+--
+ALTER TABLE `quizz__complet`
+  ADD CONSTRAINT `FK_2FBE2205BA934BCD` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`),
+  ADD CONSTRAINT `FK_2FBE2205FB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `reponses_quizz`
+--
+ALTER TABLE `reponses_quizz`
+  ADD CONSTRAINT `FK_2A06F1D0E51FC4BA` FOREIGN KEY (`reponse_quizz_id`) REFERENCES `reponse__quizz` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_2A06F1D0FB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `reponse_sequence_utilisateur`
+--
+ALTER TABLE `reponse_sequence_utilisateur`
+  ADD CONSTRAINT `FK_5EC08D3F91502CAB` FOREIGN KEY (`reponse_sequence_id`) REFERENCES `reponse__sequence` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_5EC08D3FFB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `reponse_utilisateur`
+--
+ALTER TABLE `reponse_utilisateur`
+  ADD CONSTRAINT `FK_14B756B6A78D805A` FOREIGN KEY (`reponse_sondage_id`) REFERENCES `reponse__sondage` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_14B756B6FB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `reponse__quizz`
+--
+ALTER TABLE `reponse__quizz`
+  ADD CONSTRAINT `FK_221BA238A8CC240A` FOREIGN KEY (`question_reponse_id`) REFERENCES `question__quizz` (`id`);
+
+--
+-- Contraintes pour la table `reponse__sequence`
+--
+ALTER TABLE `reponse__sequence`
+  ADD CONSTRAINT `FK_B278FA5BA8CC240A` FOREIGN KEY (`question_reponse_id`) REFERENCES `question__sequence` (`id`);
+
+--
+-- Contraintes pour la table `reponse__sondage`
+--
+ALTER TABLE `reponse__sondage`
+  ADD CONSTRAINT `FK_5EBDA695A8CC240A` FOREIGN KEY (`question_reponse_id`) REFERENCES `question__sondage` (`id`);
+
+--
+-- Contraintes pour la table `sequence`
+--
+ALTER TABLE `sequence`
+  ADD CONSTRAINT `FK_5286D72B5FDC5003` FOREIGN KEY (`enquete_id`) REFERENCES `enquete` (`id`);
+
+--
+-- Contraintes pour la table `sondage_theme`
+--
+ALTER TABLE `sondage_theme`
+  ADD CONSTRAINT `FK_6C1549B559027487` FOREIGN KEY (`theme_id`) REFERENCES `theme` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_6C1549B5BAF4AE56` FOREIGN KEY (`sondage_id`) REFERENCES `sondage` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `sondage__complet`
+--
+ALTER TABLE `sondage__complet`
+  ADD CONSTRAINT `FK_1EDA4390BAF4AE56` FOREIGN KEY (`sondage_id`) REFERENCES `sondage` (`id`),
+  ADD CONSTRAINT `FK_1EDA4390FB88E14F` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateur` (`id`);
+
+--
+-- Contraintes pour la table `theme_theme`
+--
+ALTER TABLE `theme_theme`
+  ADD CONSTRAINT `FK_CF576CED8FB24B0F` FOREIGN KEY (`theme_source`) REFERENCES `theme` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `FK_CF576CED96571B80` FOREIGN KEY (`theme_target`) REFERENCES `theme` (`id`) ON DELETE CASCADE;

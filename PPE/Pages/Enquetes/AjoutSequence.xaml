@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="PPE.Pages.Enquetes.AjoutSequence"
+              Loaded="OnLoad"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
+             mc:Ignorable="d" Height="567.2" Width="1090.167">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="232*"/>
+            <RowDefinition Height="291*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="label_Question" Content="Saisissez votre question :" Margin="251,89,669,112"/>
+        <TextBox x:Name="textBox_Question" Margin="414,89,404,107" />
+        <Button x:Name="button_Valider" Content="Terminer" Margin="450,249,448,10" Click="button_Valider_Click" Command="NavigationCommands.GoToPage"
+                                CommandParameter="/Pages/Enquetes/AjoutEnquete.xaml" IsEnabled="true" Grid.Row="1"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="36" TextWrapping="Wrap" VerticalAlignment="Top" Width="238" Margin="414,26,0,0"/>
+        <Label x:Name="label" Content="Intitulé de la séquence :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="251,26,0,0" Height="36" Width="138"/>
+
+        <DataGrid Name="dgReponses" AutoGenerateColumns="False" Margin="414,148,404,143" BorderThickness="1" Grid.RowSpan="2">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Réponses possibles" Binding="{Binding Intitule}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="1 1 1 1" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="button" Content="Nouvelle question" HorizontalAlignment="Left" VerticalAlignment="Top" Width="169" Margin="450,153,0,0" Grid.Row="1" Height="32" Click="button_Click"/>
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="232" VerticalAlignment="Top" Width="154" Margin="794,148,0,0" Grid.RowSpan="2" BorderThickness="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nom"  DisplayMemberBinding="{Binding Intitule}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

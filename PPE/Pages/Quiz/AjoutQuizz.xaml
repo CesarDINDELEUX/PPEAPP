@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="PPE.Pages.Quiz.AjoutQuizz"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" Height="567.2" Width="1090.167">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Label x:Name="label_Quizz" Margin="0,0,717.4,505.2" Content="Remplissez les différents champs puis valider votre quizz"/>
+        <TextBox x:Name="textBox_Nom" Text="Saisir le Nom de votre quizz" Margin="307,52,540.4,447.2" GotFocus="textBox_Nom_GotFocus" TextChanged="textBox_Nom_TextChanged"/>
+        <ListView x:Name="listView_Question" Margin="68,127,225.4,280.2" BorderBrush="Black" BorderThickness="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Intitulé de la question" DisplayMemberBinding="{Binding Intitule}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Label x:Name="label_Question" Margin="68,248,859.4,251.2" Content="Saisissez votre question :"/>
+        <TextBox x:Name="textBox_Question" Margin="214,248,225.4,251.2" TextChanged="textBox_Question_TextChanged"/>
+        <Button x:Name="button_AjoutQuestion" Content="Ajouter" Margin="873,248,88.4,251.2" Click="button_AjoutQuestion_Click"/>
+        <ListView x:Name="listView_Reponse" BorderBrush="Black" BorderThickness="1" Margin="68,287,225.4,120.2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Intitulé de la réponse" DisplayMemberBinding="{Binding Intitule}"/>
+                </GridView>
+            </ListView.View> 
+        </ListView>
+        <Label x:Name="label_Reponse" Margin="68,408,859.4,91.2" Content="Saisissez vos réponses :"/>
+        <TextBox x:Name="textBox_Reponse" Margin="214,408,225.4,91.2" TextChanged="textBox_Reponse_TextChanged"/>
+        <Button x:Name="button_AjoutReponse" Content="Ajouter" Margin="873,408,88.4,91.2" Click="button_AjoutReponse_Click"/>
+        <Button x:Name="button_Ajouter" Content="Ajouter" Margin="524,456,375.4,35.2" Click="button_Ajouter_Click"/>
+        <Button x:Name="button_Valider" Content="Valider et Terminer" Margin="307,456,592.4,35.2" Click="button_Valider_Click"/>
+    </Grid>
+</UserControl>

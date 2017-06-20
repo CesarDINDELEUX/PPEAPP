@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="PPE.Pages.Quiz.ModificationQuiz"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" Height="567.2" Width="1090.167">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Label x:Name="label_ChoixQuestion" Content="Choisissez la question à modifier dans la liste ci-dessous" Margin="20,20,600.4,480.2"/>
+        <ListView x:Name="listView_Question" Margin="20,48,132.4,314.2" BorderBrush="Black" BorderThickness="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Intitulé de la question" DisplayMemberBinding="{Binding Intitule}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="textBox_ModifQuestion" Margin="20,214,132.4,282.2"/>
+        <Button x:Name="button_ValiderQuestion" Margin="953,214,10.4,282.2" Content="Modifier"/>
+        <Label x:Name="label_ChoixReponse" Content="Choisissez la réponse à modifier dans la liste ci-dessous" Margin="20,250,555.4,246.2"/>
+        <ListView x:Name="listView_Reponse" BorderBrush="Black" BorderThickness="1" Margin="20,282,132.4,80.2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Intitulé de la réponse" DisplayMemberBinding="{Binding Intitule}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="textBox_ModifReponse" Margin="20,448,132.4,48.2"/>
+        <Button x:Name="button_ValiderReponse" Content="Modifier" Margin="953,448,10.4,48.2"/>
+        <Button x:Name="button_Valider" Content="Valider" Margin="449,480,433.4,10.2" Click="button_Valider_Click"/>
+    </Grid>
+</UserControl>

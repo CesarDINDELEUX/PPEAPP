@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e03f47fcc1e24797b9b527a9a5aac96c" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.administrateur" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.cadeau" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.commentaire__enquete" Width="1.5" PointX="9.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.commentaire__quizz" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.commentaire__sondage" Width="1.5" PointX="12.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.enquete" Width="1.5" PointX="1.5" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.fos_user" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.question__quizz" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.question__sequence" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.question__sondage" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.quizz" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.quizz__complet" Width="1.5" PointX="9.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.reponse__quizz" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.reponse__sequence" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.reponse__sondage" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.sequence" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.sondage" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.sondage__complet" Width="1.5" PointX="9.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.theme" Width="1.5" PointX="1.5" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="cesar.dindeleuxModel.utilisateur" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_3D213460BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_508142885FDC5003" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_50814288FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_E2CBAB26BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_E2CBAB26FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_F320E13EBAF4AE56" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_F320E13EFB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_5286D72B5FDC5003" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_D6D86B2959027487" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_221BA238A8CC240A" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_F11254A9BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_7593D6D098FB19AE" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_B278FA5BA8CC240A" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_5EBDA695A8CC240A" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_623999EEBAF4AE56" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_2FBE2205BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_2FBE2205FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_1EDA4390BAF4AE56" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.FK_1EDA4390FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.equete_theme" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.reponse_sequence_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.reponse_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.reponses_quizz" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.sondage_theme" ManuallyRouted="false" />
+        <AssociationConnector Association="cesar.dindeleuxModel.theme_theme" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

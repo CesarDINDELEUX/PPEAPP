@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3edc86954e2b49859de6927b72040cc5" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="PPE4Model.Administrateur" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.cadeau" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.commentaire__enquete" Width="2.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.commentaire__quizz" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.commentaire__sondage" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.enquete" Width="1.5" PointX="1.5" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.question__quizz" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.question__sequence" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.question__sondage" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.quizz" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.quizz__complet" Width="1.5" PointX="9.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.reponse__quizz" Width="1.5" PointX="5.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.reponse__sequence" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.reponse__sondage" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.sequence" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.sondage" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.sondage__complet" Width="1.5" PointX="9.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.theme" Width="1.5" PointX="1.5" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE4Model.utilisateur" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="PPE4Model.FK_3D213460BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_508142885FDC5003" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_50814288FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_E2CBAB26BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_E2CBAB26FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_F320E13EBAF4AE56" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_F320E13EFB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_5286D72B5FDC5003" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_221BA238A8CC240A" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_F11254A9BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_7593D6D098FB19AE" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_B278FA5BA8CC240A" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_5EBDA695A8CC240A" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_623999EEBAF4AE56" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_2FBE2205BA934BCD" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_2FBE2205FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_1EDA4390BAF4AE56" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.FK_1EDA4390FB88E14F" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.equete_theme" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.reponse_sequence_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.reponse_utilisateur" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.reponses_quizz" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.sondage_theme" ManuallyRouted="false" />
+        <AssociationConnector Association="PPE4Model.theme_theme" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="PPE.Pages.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid Style="{StaticResource ContentRoot}" Height="700" Width="958">
+        <ScrollViewer>
+            <TextBlock Text="Veuillez vous connecter" />
+        </ScrollViewer>
+        <Label x:Name="label_Login" Content="Identifiant :" Margin="253,295,613,375"/>
+        <TextBox x:Name="TextBox_Login" Width="auto" Height="auto" Margin="369,300,359,375"/>
+        <Label x:Name="label_Password" Content="Mot de passe : " Height="auto" Width="auto" Margin="253,345,588,330" RenderTransformOrigin="1.187,0.635"/>
+        <PasswordBox x:Name="PasswordBox" Width="auto" Height="auto" Margin="370,345,359,330"/>
+        <Button x:Name="button_connect" Content="Connexion" Width="auto" Height="auto" Click="button_connect_Click" Margin="436,402,424,272"/>
+    </Grid>
+</UserControl>

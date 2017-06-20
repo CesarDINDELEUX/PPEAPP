@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="PPE.Pages.Quiz.CommentaireQuizz"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             mc:Ignorable="d" Height="567.2" Width="1090.167">
+    <Grid Style="{StaticResource ContentRoot}">
+        <Label x:Name="label_Quizz" Content="Choisissez le quizz pour lequel vous voulez voir les commentaires :" Margin="20,20,651.4,476.2"/>
+        <ComboBox x:Name="comboBox_ComQuizz" Margin="437,20,245.4,476.2"/>
+        <ListView x:Name="listView_ComQuizz" BorderBrush="Black" BorderThickness="1" Margin="96,76,124.4,132.2" DisplayMemberPath="{Binding Intitule}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Commentaire"/>
+                    <GridViewColumn Header="Supprimer">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button x:Name="button_SupprimerCom" Content="X" Click="button_SupprimerCom_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
